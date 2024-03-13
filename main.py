@@ -80,7 +80,7 @@ class InitialWindow(Gtk.Window):
 
             configurations.append({'Name': name, 'IPv4': ipv4_addresses, 'IPv6': ipv6_addresses})
 
-            with open('dns_config.json', 'w') as f:
+            with open('dns.json', 'w') as f:
                 json.dump(configurations, f, indent=4)
 
             print("DNS server added.")
