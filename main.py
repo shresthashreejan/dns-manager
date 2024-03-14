@@ -1,4 +1,5 @@
 import gi
+import subprocess
 import json
 gi.require_version('Gtk', '3.0')
 from gi.repository import Gtk
@@ -60,8 +61,12 @@ class InitialWindow(Gtk.Window):
         dialog = Gtk.MessageDialog(parent=self, flags=Gtk.DialogFlags.MODAL, type=Gtk.MessageType.INFO, buttons=Gtk.ButtonsType.OK, message_format="DNS Details")
 
         dialog.format_secondary_text("Name: {}\nIPv4: {}\nIPv6: {}".format(name, ipv4, ipv6))
-        dialog.run()
+        response = dialog.run()
         dialog.destroy()
+
+        if response == Gtk.ResponseType.OK:
+            command = ['bash', 'config_dns.sh', ipv4, ipv6]
+            subprocess.run(command)
 
     def add_dns_server(self, widget):
         dialog = AddServerDialog(self)
