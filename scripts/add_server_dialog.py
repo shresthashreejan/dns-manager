@@ -38,3 +38,15 @@ class AddServerDialog(Gtk.Dialog):
 
     def get_entries_data(self):
         return {label: entry.get_text() for label, entry in self.entries.items()}
+
+    def validate_entries(self):
+        for entry_widget in self.entries.values():
+            if entry_widget.get_text().strip() == "":
+                return False
+        return True
+
+    def show_toast_message(self, message):
+        toast = Gtk.MessageDialog(parent=self, flags=Gtk.DialogFlags.MODAL, type=Gtk.MessageType.WARNING, message_format=message)
+        toast.set_border_width(20)
+        toast.run()
+        toast.destroy()
