@@ -3,7 +3,7 @@ gi.require_version('Gtk', '3.0')
 from gi.repository import Gtk
 import subprocess
 import json
-from .add_server_dialog import AddServerDialog
+from .server_dialog import ServerDialog
 
 class InitialWindow(Gtk.Window):
 
@@ -69,7 +69,7 @@ class InitialWindow(Gtk.Window):
         dialog.destroy()
 
         if response == Gtk.ResponseType.OK:
-            command = ['bash', 'config_dns.sh', ipv4, ipv6]
+            command = ['bash', 'config.sh', ipv4, ipv6]
             subprocess.run(command)
         elif response == Gtk.ResponseType.CANCEL:
             self.remove_server(widget, name)
@@ -91,7 +91,7 @@ class InitialWindow(Gtk.Window):
         self.show_all()
 
     def add_dns_server(self, widget):
-        dialog = AddServerDialog(self)
+        dialog = ServerDialog(self)
         response = dialog.run()
 
         if response == Gtk.ResponseType.OK:
@@ -106,11 +106,7 @@ class InitialWindow(Gtk.Window):
                     json.dump(self.configurations, f, indent=4)
 
                 self.add_card({'Name': name, 'IPv4': ipv4_addresses, 'IPv6': ipv6_addresses})
-
-                print("DNS server added.")
             else:
                 dialog.show_toast_message("Please fill in all fields.")
-        elif response == Gtk.ResponseType.CANCEL:
-            print("Cancelled.")
 
         dialog.destroy()

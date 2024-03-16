@@ -2,7 +2,7 @@ import gi
 gi.require_version('Gtk', '3.0')
 from gi.repository import Gtk
 
-class AddServerDialog(Gtk.Dialog):
+class ServerDialog(Gtk.Dialog):
 
     LABELS = {
         "Name:": "name_entry",
@@ -35,9 +35,6 @@ class AddServerDialog(Gtk.Dialog):
                 grid.attach(Gtk.Label(), 0, row_index + 1, 1, 1)
 
         self.show_all()
-
-    def get_entries_data(self):
-        return {label: entry.get_text() for label, entry in self.entries.items()}
 
     def validate_entries(self):
         for entry_widget in self.entries.values():
