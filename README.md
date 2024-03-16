@@ -1,6 +1,6 @@
-# Linux DNS Switcher
+# Linux DNS Manager
 
-Linux DNS Switcher is a simple Python GTK application for managing DNS server configurations. It allows users to add, view, remove and setup DNS server configurations through a graphical user interface.
+Linux DNS Manager is a simple Python GTK application for managing DNS server configurations. It allows users to add, view, remove and setup DNS server configurations through a graphical user interface.
 
 ## Requirements
 
@@ -39,4 +39,4 @@ python3 main.py
 
 ## Contributing
 
-Contributions to Linux DNS Switcher are welcome! If you find any issues or have suggestions for improvements, please open an issue or submit a pull request.
+Contributions to Linux DNS Manager are welcome! If you find any issues or have suggestions for improvements, please open an issue or submit a pull request.
